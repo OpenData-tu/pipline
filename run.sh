@@ -3,6 +3,7 @@ CONSUMER="weatherData"
 
 KAFKA="kafka_2.11-0.10.2.0"
 ELASTIC="elasticsearch-5.4.1"
+CONSUMERTOELASTIC="kafkaToElasticsearchConsumer"
 
 cd "pipline";
 echo "start Elasticsearch";
@@ -21,5 +22,11 @@ echo "start kafka"
 bin/kafka-server-start.sh config/server.properties >>/dev/null 2>>/dev/null &
 #$KAFKA/bin/kafka-server-start.sh config/server.properties
 echo "start consumer"
-bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic $CONSUMER
+#bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic $CONSUMER
+cd ..
+cd $CONSUMERTOELASTIC;
+echo $CONSUMERTOELASTIC
+mvn exec:java -Dexec.mainClass="ConsumerKafka" &
+#bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic $CONSUMER
+
 

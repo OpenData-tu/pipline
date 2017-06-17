@@ -23,7 +23,7 @@ else
 	echo "kafka already there";
 fi
 
-if [ ! -d "$KAFKA" ]; then
+if [ ! -d "$ELASTIC" ]; then
 	wget https://artifacts.elastic.co/downloads/elasticsearch/$ELASTIC.tar.gz;
 	tar -xzf $ELASTIC.tar.gz;
 	rm $ELASTIC.tgz
